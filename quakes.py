@@ -42,7 +42,7 @@ class QuakeQuery(object):
     def calc_bounding_box(self):
         delta = self.radius / self.m_per_deg
         self.lat_range = (self.latitude - delta, self.latitude + delta)
-        delta /= pandas.np.cos(self.latitude)
+        delta /= pandas.np.cos(pandas.np.pi * self.latitude /180)
         self.lon_range = (self.longitude - delta, self.longitude + delta)
 
     def query(self, start_date, end_date='now', min_mag=2, max_mag=10):
